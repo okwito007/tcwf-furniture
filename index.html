@@ -29,9 +29,6 @@
                     },
                     animation: {
                         'fadeIn': 'fadeIn 0.4s ease-out',
-                        'slideUp': 'slideUp 0.5s ease-out',
-                        'scaleIn': 'scaleIn 0.3s ease-out',
-                        'shimmer': 'shimmer 2s infinite',
                         'blink': 'blink 1.2s ease-in-out infinite',
                         'pulse-gold': 'pulseGold 2s ease-in-out infinite',
                         'glow': 'glow 3s ease-in-out infinite',
@@ -39,9 +36,6 @@
                     },
                     keyframes: {
                         fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        slideUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-                        scaleIn: { '0%': { opacity: '0', transform: 'scale(0.9)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
-                        shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
                         blink: { '0%, 100%': { opacity: '1' }, '50%': { opacity: '0.2' } },
                         pulseGold: { '0%, 100%': { boxShadow: '0 0 5px rgba(201,168,76,0.3)' }, '50%': { boxShadow: '0 0 20px rgba(201,168,76,0.8)' } },
                         glow: { '0%, 100%': { textShadow: '0 0 10px rgba(201,168,76,0.5)' }, '50%': { textShadow: '0 0 20px rgba(201,168,76,0.8)' } },
@@ -51,9 +45,6 @@
             }
         }
         
-        // ============================================
-        // CONFIGURATION
-        // ============================================
         const CONFIG = {
             IMGBB_API_KEY: 'a408161fc9da7f32e63c081974794882',
             ADMIN_PASSWORD: 'tochukwu',
@@ -69,15 +60,15 @@
         body { background-color: #080808; color: #ffffff; -webkit-font-smoothing: antialiased; }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #a88a2e, #c9a84c, #d4b86a); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 3px; }
         
         .logo-container { position: relative; display: inline-block; animation: float 3s ease-in-out infinite; }
         .logo-main { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2.25rem; letter-spacing: 0.22em; background: linear-gradient(180deg, #f7e08a, #c9a84c, #a88a2e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 8px rgba(201,168,76,0.4)); animation: glow 3s ease-in-out infinite; }
-        .logo-border { border: 2.5px solid; border-image: linear-gradient(135deg, #a88a2e, #c9a84c, #d4b86a, #c9a84c, #a88a2e) 1; box-shadow: 0 0 20px rgba(201,168,76,0.2), 0 0 40px rgba(201,168,76,0.1); border-radius: 6px; padding: 0.3rem 1.5rem; transition: all 0.5s; position: relative; overflow: hidden; }
+        .logo-border { border: 2.5px solid; border-image: linear-gradient(135deg, #a88a2e, #c9a84c, #d4b86a, #c9a84c, #a88a2e) 1; box-shadow: 0 0 20px rgba(201,168,76,0.2); border-radius: 6px; padding: 0.3rem 1.5rem; transition: all 0.5s; position: relative; overflow: hidden; }
         .logo-border::before { content: ''; position: absolute; top: -1px; left: -100%; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent); animation: logoShine 3s ease-in-out infinite; }
         @keyframes logoShine { 0% { left: -100%; } 50% { left: 100%; } 100% { left: 100%; } }
         .logo-border:hover { box-shadow: 0 0 30px rgba(201,168,76,0.4); transform: scale(1.02); }
-        .logo-subtitle { letter-spacing: 0.4em; font-weight: 700; font-size: 0.6rem; background: linear-gradient(90deg, #a88a2e, #c9a84c, #d4b86a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: 0.5rem; }
+        .logo-subtitle { letter-spacing: 0.4em; font-weight: 700; font-size: 0.6rem; background: linear-gradient(90deg, #a88a2e, #c9a84c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: 0.5rem; }
         .logo-diamond { position: absolute; width: 8px; height: 8px; background: #c9a84c; transform: rotate(45deg); animation: diamondPulse 2s ease-in-out infinite; }
         .logo-diamond.top-left { top: -4px; left: -4px; }
         .logo-diamond.top-right { top: -4px; right: -4px; animation-delay: 0.5s; }
@@ -91,7 +82,7 @@
         .gold-underline::after { content: ''; display: block; width: 50px; height: 3px; background: linear-gradient(90deg, transparent, #c9a84c, transparent); margin: 14px auto 0; }
         
         .product-card { transition: all 0.4s; cursor: pointer; }
-        .product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.2); }
+        .product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
         .product-card:hover img { transform: scale(1.06); }
         .product-card img { transition: transform 0.6s; }
         
@@ -104,15 +95,15 @@
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.75rem; }
         @media (max-width: 640px) { .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; } }
         
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center; }
         .modal.active { display: flex; }
         .modal-content { background: #141414; border: 1px solid #222; border-radius: 16px; padding: 32px; max-width: 520px; width: 92%; max-height: 90vh; overflow-y: auto; }
         
-        .image-viewer-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center; cursor: zoom-out; backdrop-filter: blur(15px); }
+        .image-viewer-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center; cursor: zoom-out; }
         .image-viewer-overlay.active { display: flex; }
-        .image-viewer-overlay img { max-width: 92%; max-height: 92vh; object-fit: contain; border-radius: 4px; cursor: default; animation: scaleIn 0.4s ease-out; }
+        .image-viewer-overlay img { max-width: 92%; max-height: 92vh; object-fit: contain; border-radius: 4px; }
         .image-viewer-close { position: fixed; top: 20px; right: 30px; color: #fff; font-size: 36px; cursor: pointer; z-index: 100000; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border-radius: 50%; }
-        .image-viewer-close:hover { background: rgba(255,255,255,0.15); transform: rotate(90deg); }
+        .image-viewer-close:hover { background: rgba(255,255,255,0.15); }
         .image-viewer-nav { position: fixed; top: 50%; transform: translateY(-50%); color: #fff; font-size: 28px; cursor: pointer; z-index: 100000; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border-radius: 50%; }
         .image-viewer-prev { left: 20px; }
         .image-viewer-next { right: 20px; }
@@ -120,14 +111,14 @@
         .upload-area { border: 2px dashed #c9a84c; border-radius: 12px; padding: 32px; text-align: center; cursor: pointer; background: rgba(201,168,76,0.02); }
         .upload-area:hover { background: rgba(201,168,76,0.06); }
         .progress-bar { width: 100%; height: 4px; background: #1a1a1a; border-radius: 2px; margin-top: 10px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, #a88a2e, #c9a84c); width: 0%; transition: width 0.4s; }
+        .progress-fill { height: 100%; background: #c9a84c; width: 0%; transition: width 0.4s; }
         
         .whatsapp-float { position: fixed; bottom: 28px; right: 28px; background: #25D366; color: white; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 8px 25px rgba(37,211,102,0.35); z-index: 999; text-decoration: none; }
         .whatsapp-float:hover { transform: scale(1.08); }
         
-        .hero-bg { background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1920'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .hero-bg { background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1920'); background-size: cover; background-position: center; }
         .btn-gold { background: linear-gradient(135deg, #a88a2e, #c9a84c); border: none; color: #000; font-weight: 600; padding: 14px 28px; border-radius: 10px; cursor: pointer; transition: all 0.3s; }
-        .btn-gold:hover { background: linear-gradient(135deg, #c9a84c, #d4b86a); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.3); }
+        .btn-gold:hover { background: linear-gradient(135deg, #c9a84c, #d4b86a); transform: translateY(-2px); }
         
         .category-card-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; transition: transform 0.6s; }
     </style>
@@ -156,106 +147,98 @@
                 <a href="#" class="text-white/75 hover:text-brand-gold transition" onclick="showCollection('office'); return false;">Office</a>
             </nav>
             <div class="flex items-center space-x-4 text-white/85">
-                <button onclick="openLoginModal()" class="text-xs border border-brand-gold/40 px-3 py-2 rounded-md hover:border-brand-gold"><i class="fa-solid fa-lock mr-1"></i> Admin</button>
+                <button onclick="openLoginModal()" class="text-xs border border-brand-gold/40 px-3 py-2 rounded-md"><i class="fa-solid fa-lock mr-1"></i> Admin</button>
                 <a href="https://wa.me/2349135357118" target="_blank" class="hover:text-green-400 text-lg"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
     </header>
 
-    <!-- LOGIN MODAL -->
-    <div id="login-modal" class="modal"><div class="modal-content"><h3 class="text-brand-gold text-2xl font-serif font-bold mb-3">🔐 Admin Access</h3><input type="password" id="admin-password" placeholder="Password" class="w-full bg-[#0a0a0a] border border-white/10 text-white px-4 py-3.5 rounded-lg mb-4" onkeypress="if(event.key==='Enter')adminLogin()"><button onclick="adminLogin()" class="w-full btn-gold"><i class="fa-solid fa-right-to-bracket mr-2"></i>Login</button><p id="login-error" class="text-red-400 text-sm mt-3 hidden">❌ Wrong password!</p><button onclick="document.getElementById('login-modal').classList.remove('active')" class="w-full text-brand-textMuted text-sm mt-4">Cancel</button></div></div>
+    <!-- LOGIN -->
+    <div id="login-modal" class="modal"><div class="modal-content"><h3 class="text-brand-gold text-2xl font-serif font-bold mb-3">🔐 Admin</h3><input type="password" id="admin-password" placeholder="Password" class="w-full bg-[#0a0a0a] border border-white/10 text-white px-4 py-3.5 rounded-lg mb-4"><button onclick="adminLogin()" class="w-full btn-gold">Login</button><p id="login-error" class="text-red-400 text-sm mt-3 hidden">❌ Wrong!</p><button onclick="document.getElementById('login-modal').classList.remove('active')" class="w-full text-brand-textMuted text-sm mt-4">Cancel</button></div></div>
 
-    <!-- ADMIN PANEL -->
-    <div id="admin-panel" class="modal"><div class="modal-content" style="max-width:820px;"><div class="flex justify-between items-center mb-6"><h3 class="text-brand-gold text-2xl font-serif font-bold">⚙️ Admin Panel</h3><button onclick="closeAdminPanel()" class="text-white/60 text-2xl hover:text-red-400">&times;</button></div><div class="flex gap-2 mb-6 border-b border-white/5 pb-4 flex-wrap"><button onclick="showAdminTab('upload')" id="tab-upload-btn" class="px-5 py-2.5 bg-brand-gold text-black rounded-lg text-sm font-semibold">📤 Upload</button><button onclick="showAdminTab('manage')" id="tab-manage-btn" class="px-5 py-2.5 bg-white/5 text-white rounded-lg text-sm">📋 Manage</button></div><div id="tab-upload"><label class="text-white text-sm mb-2 block">Category:</label><select id="upload-category" class="w-full bg-[#0a0a0a] border border-white/10 text-white px-4 py-3 rounded-lg mb-5"><option value="bedroom">🛏️ Bedroom</option><option value="livingroom">🛋️ Living Room</option><option value="chairs">🪑 Chairs</option><option value="dining">🍽️ Dining</option><option value="tables">📐 Tables</option><option value="tvstands">📺 TV Stands</option><option value="office">💼 Office</option></select><div class="upload-area mb-4" onclick="document.getElementById('file-input').click()"><i class="fa-solid fa-cloud-arrow-up text-4xl text-brand-gold mb-3"></i><p class="text-white">Click to select images</p><input type="file" id="file-input" multiple accept="image/*" style="display:none" onchange="handleFileSelect(event)"></div><div id="upload-preview" class="grid grid-cols-4 gap-2 mb-4"></div><div id="upload-progress" class="hidden mb-4"><div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div><p id="progress-text" class="text-brand-textMuted text-xs mt-2">Uploading...</p></div><button onclick="uploadImages()" class="w-full btn-gold"><i class="fa-solid fa-upload mr-2"></i>Upload & Save</button></div><div id="tab-manage" style="display:none;"><div class="flex gap-2 mb-4 flex-wrap" id="manage-buttons"></div><div id="manage-images" class="grid grid-cols-3 gap-2 max-h-64 overflow-y-auto"></div></div><button onclick="closeAdminPanel()" class="w-full text-brand-textMuted text-sm mt-5">Close</button></div></div>
+    <!-- ADMIN -->
+    <div id="admin-panel" class="modal"><div class="modal-content" style="max-width:820px;"><div class="flex justify-between items-center mb-6"><h3 class="text-brand-gold text-2xl font-serif font-bold">⚙️ Admin</h3><button onclick="closeAdminPanel()" class="text-white/60 text-2xl hover:text-red-400">&times;</button></div><div class="flex gap-2 mb-6"><button onclick="showTab('upload')" id="tab-upload-btn" class="px-5 py-2.5 bg-brand-gold text-black rounded-lg text-sm font-semibold">📤 Upload</button><button onclick="showTab('manage')" id="tab-manage-btn" class="px-5 py-2.5 bg-white/5 text-white rounded-lg text-sm">📋 Manage</button></div><div id="tab-upload"><select id="upload-category" class="w-full bg-[#0a0a0a] border border-white/10 text-white px-4 py-3 rounded-lg mb-5"><option value="bedroom">🛏️ Bedroom</option><option value="livingroom">🛋️ Living Room</option><option value="chairs">🪑 Chairs</option><option value="dining">🍽️ Dining</option><option value="tables">📐 Tables</option><option value="tvstands">📺 TV Stands</option><option value="office">💼 Office</option></select><div class="upload-area mb-4" onclick="document.getElementById('file-input').click()"><i class="fa-solid fa-cloud-arrow-up text-4xl text-brand-gold mb-3"></i><p class="text-white">Click to select images</p><input type="file" id="file-input" multiple accept="image/*" style="display:none" onchange="handleFileSelect(event)"></div><div id="upload-preview" class="grid grid-cols-4 gap-2 mb-4"></div><div id="upload-progress" class="hidden mb-4"><div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div><p id="progress-text" class="text-brand-textMuted text-xs mt-2">Uploading...</p></div><button onclick="uploadImages()" class="w-full btn-gold">📤 Upload & Save</button></div><div id="tab-manage" style="display:none;"><div class="flex gap-2 mb-4 flex-wrap" id="manage-buttons"></div><div id="manage-images" class="grid grid-cols-3 gap-2 max-h-64 overflow-y-auto"></div></div><button onclick="closeAdminPanel()" class="w-full text-brand-textMuted text-sm mt-5">Close</button></div></div>
 
     <!-- IMAGE VIEWER -->
     <div id="image-viewer" class="image-viewer-overlay" onclick="closeImageViewer()"><span class="image-viewer-close">&times;</span><span class="image-viewer-nav image-viewer-prev" onclick="event.stopPropagation();navigateViewer(-1)"><i class="fa-solid fa-chevron-left"></i></span><span class="image-viewer-nav image-viewer-next" onclick="event.stopPropagation();navigateViewer(1)"><i class="fa-solid fa-chevron-right"></i></span><img id="viewer-image" src="" onclick="event.stopPropagation()"></div>
 
     <!-- HERO -->
-    <section id="home-section" class="relative min-h-[calc(100vh-7rem)] flex items-center hero-bg overflow-hidden"><div class="absolute inset-0 z-0 bg-gradient-to-r from-[#080808] via-[#080808]/80 to-[#080808]/20"></div><div class="relative z-10 max-w-7xl mx-auto px-6 w-full py-20"><div class="max-w-xl"><p class="text-brand-gold text-xs uppercase tracking-[0.3em] mb-4 font-semibold">Premium Furniture</p><h1 class="font-serif text-5xl md:text-7xl leading-[1.1] mb-6 tracking-tight font-bold">Crafted for<br><span class="gold-text italic">Comfort.</span></h1><p class="text-brand-textMuted text-base md:text-lg mb-10 max-w-sm">Timeless furniture designs that elevate your living space.</p><a href="#" class="inline-flex items-center space-x-3 btn-gold"><span>Explore</span><i class="fa-solid fa-arrow-right text-xs"></i></a></div></div><div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#080808] to-transparent z-10"></div></section>
+    <section id="home-section" class="relative min-h-[calc(100vh-7rem)] flex items-center hero-bg overflow-hidden"><div class="absolute inset-0 z-0 bg-gradient-to-r from-[#080808] via-[#080808]/80 to-[#080808]/20"></div><div class="relative z-10 max-w-7xl mx-auto px-6 w-full py-20"><div class="max-w-xl"><p class="text-brand-gold text-xs uppercase tracking-[0.3em] mb-4 font-semibold">Premium Furniture</p><h1 class="font-serif text-5xl md:text-7xl leading-[1.1] mb-6 font-bold">Crafted for<br><span class="gold-text italic">Comfort.</span></h1><p class="text-brand-textMuted text-base md:text-lg mb-10 max-w-sm">Timeless designs that elevate your space.</p><a href="#" class="btn-gold inline-flex items-center space-x-3"><span>Explore</span><i class="fa-solid fa-arrow-right text-xs"></i></a></div></div></section>
 
-    <!-- TRUST BADGES -->
+    <!-- TRUST -->
     <section id="home-section2" class="bg-[#0a0a0a] border-y border-white/[0.03] py-12"><div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8"><div class="flex items-start space-x-4"><div class="w-10 h-10 rounded-lg bg-brand-gold/10 flex items-center justify-center"><i class="fa-solid fa-award text-lg text-brand-gold"></i></div><div><h4 class="text-sm font-semibold">Premium Quality</h4><p class="text-xs text-brand-textMuted">Finest materials</p></div></div><div class="flex items-start space-x-4"><div class="w-10 h-10 rounded-lg bg-brand-gold/10 flex items-center justify-center"><i class="fa-solid fa-compass-drafting text-lg text-brand-gold"></i></div><div><h4 class="text-sm font-semibold">Custom Made</h4><p class="text-xs text-brand-textMuted">Tailored to you</p></div></div><div class="flex items-start space-x-4"><div class="w-10 h-10 rounded-lg bg-brand-gold/10 flex items-center justify-center"><i class="fa-solid fa-truck-fast text-lg text-brand-gold"></i></div><div><h4 class="text-sm font-semibold">Free Delivery</h4><p class="text-xs text-brand-textMuted">Fast & reliable</p></div></div><div class="flex items-start space-x-4"><div class="w-10 h-10 rounded-lg bg-brand-gold/10 flex items-center justify-center"><i class="fa-solid fa-shield-check text-lg text-brand-gold"></i></div><div><h4 class="text-sm font-semibold">Secure Payment</h4><p class="text-xs text-brand-textMuted">100% protected</p></div></div></div></section>
 
     <!-- CATEGORIES -->
-    <section id="home-section3" class="max-w-7xl mx-auto px-6 py-24"><p class="text-brand-gold text-xs uppercase tracking-[0.3em] text-center mb-3 font-semibold">Browse</p><h2 class="font-serif text-4xl text-center tracking-wide gold-underline mb-16 font-bold">Shop By Category</h2><div id="categories-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div></section>
+    <section id="home-section3" class="max-w-7xl mx-auto px-6 py-24"><p class="text-brand-gold text-xs uppercase tracking-[0.3em] text-center mb-3 font-semibold">Browse</p><h2 class="font-serif text-4xl text-center gold-underline mb-16 font-bold">Shop By Category</h2><div id="categories-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"><div class="col-span-full text-center py-10"><i class="fa-solid fa-spinner fa-spin text-3xl text-brand-gold"></i><p class="text-brand-textMuted mt-3">Loading products...</p></div></div></section>
 
     <!-- COLLECTIONS -->
-    <div id="bedroom-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><div><p class="text-brand-gold text-xs uppercase tracking-[0.3em] mb-2">Collection</p><h2 class="font-serif text-3xl font-bold">🛏️ Bedroom · Beds</h2></div><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="bedroom-products"></div></div>
-    <div id="livingroom-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><div><p class="text-brand-gold text-xs uppercase tracking-[0.3em] mb-2">Collection</p><h2 class="font-serif text-3xl font-bold">🛋️ Living Room · Sofas</h2></div><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="livingroom-products"></div></div>
-    <div id="chairs-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><div><p class="text-brand-gold text-xs uppercase tracking-[0.3em] mb-2">Collection</p><h2 class="font-serif text-3xl font-bold">🪑 Chairs</h2></div><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="chairs-products"></div></div>
-    <div id="dining-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><div><p class="text-brand-gold text-xs uppercase tracking-[0.3em] mb-2">Collection</p><h2 class="font-serif text-3xl font-bold">🍽️ Dining</h2></div><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="dining-products"></div></div>
-    <div id="tables-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><div><p class="text-brand-gold text-xs uppercase tracking-[0.3em] mb-2">Collection</p><h2 class="font-serif text-3xl font-bold">📐 Tables</h2></div><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="tables-products"></div></div>
-    <div id="tvstands-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><div><p class="text-brand-gold text-xs uppercase tracking-[0.3em] mb-2">Collection</p><h2 class="font-serif text-3xl font-bold">📺 TV Stands</h2></div><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="tvstands-products"></div></div>
-    <div id="office-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><div><p class="text-brand-gold text-xs uppercase tracking-[0.3em] mb-2">Collection</p><h2 class="font-serif text-3xl font-bold">💼 Office</h2></div><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="office-products"></div></div>
+    <div id="bedroom-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">🛏️ Bedroom</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="bedroom-products"></div></div>
+    <div id="livingroom-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">🛋️ Living Room</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="livingroom-products"></div></div>
+    <div id="chairs-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">🪑 Chairs</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="chairs-products"></div></div>
+    <div id="dining-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">🍽️ Dining</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="dining-products"></div></div>
+    <div id="tables-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">📐 Tables</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="tables-products"></div></div>
+    <div id="tvstands-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">📺 TV Stands</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="tvstands-products"></div></div>
+    <div id="office-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">💼 Office</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="office-products"></div></div>
 
-    <!-- CEO CONTACT -->
-    <section id="ceo-contact" class="max-w-7xl mx-auto px-6 py-10 border-t border-white/[0.03]"><div class="bg-brand-cardBg border border-white/[0.04] rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-5"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-full bg-green-500/10 flex items-center justify-center"><i class="fa-brands fa-whatsapp text-2xl text-green-400"></i></div><div><p class="text-xs text-brand-textMuted uppercase">Contact CEO</p><p class="text-xl font-bold">Tochukwu</p><p class="text-sm text-brand-gold">09135357118</p></div></div><a href="https://wa.me/2349135357118" target="_blank" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-7 py-3.5 text-sm font-semibold rounded-lg"><i class="fa-brands fa-whatsapp text-lg"></i> Chat on WhatsApp</a></div></section>
+    <!-- CEO -->
+    <section id="ceo-contact" class="max-w-7xl mx-auto px-6 py-10 border-t border-white/[0.03]"><div class="bg-brand-cardBg rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-5"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-full bg-green-500/10 flex items-center justify-center"><i class="fa-brands fa-whatsapp text-2xl text-green-400"></i></div><div><p class="text-xs text-brand-textMuted">Contact CEO</p><p class="text-xl font-bold">Tochukwu</p><p class="text-sm text-brand-gold">09135357118</p></div></div><a href="https://wa.me/2349135357118" target="_blank" class="bg-green-500 text-white px-7 py-3.5 rounded-lg font-semibold"><i class="fa-brands fa-whatsapp text-lg mr-2"></i>Chat on WhatsApp</a></div></section>
 
-    <!-- FOOTER -->
-    <footer class="bg-[#060606] border-t border-white/[0.03] py-14 mt-8"><div class="max-w-7xl mx-auto px-6 text-center"><p class="text-[11px] text-white/30">© 2026 TCWF · Classic World Furniture</p><p class="text-[11px] text-white/20 mt-1">CEO: Tochukwu | 09135357118</p></div></footer>
-
+    <footer class="bg-[#060606] py-14 mt-8 text-center"><p class="text-[11px] text-white/30">© 2026 TCWF | CEO: Tochukwu | 09135357118</p></footer>
     <a href="https://wa.me/2349135357118" target="_blank" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
 
     <script>
-        // ============================================
-        // SHEETDB POWERED - EVERYONE SEES IMAGES!
-        // ============================================
-        
         let isAdmin = false;
         let selectedFiles = [];
         let allProducts = [];
         let currentViewerImages = [];
         let currentViewerIndex = 0;
         
-        const CATEGORIES = ['bedroom', 'livingroom', 'chairs', 'dining', 'tables', 'tvstands', 'office'];
-        const CAT_ICONS = { bedroom: 'fa-bed', livingroom: 'fa-couch', chairs: 'fa-chair', dining: 'fa-utensils', tables: 'fa-table', tvstands: 'fa-tv', office: 'fa-briefcase' };
-        const CAT_EMOJI = { bedroom: '🛏️', livingroom: '🛋️', chairs: '🪑', dining: '🍽️', tables: '📐', tvstands: '📺', office: '💼' };
-        const CAT_LABELS = { bedroom: 'Bedroom', livingroom: 'Living Room', chairs: 'Chairs', dining: 'Dining', tables: 'Tables', tvstands: 'TV Stands', office: 'Office' };
-        const CAT_SUBS = { bedroom: 'Luxury Beds', livingroom: 'Premium Sofas', chairs: 'All Chairs', dining: 'Tables & Chairs', tables: 'All Tables', tvstands: 'TV Units', office: 'Desks & Chairs' };
+        const CATEGORIES = ['bedroom','livingroom','chairs','dining','tables','tvstands','office'];
+        const CAT_ICONS = { bedroom:'fa-bed',livingroom:'fa-couch',chairs:'fa-chair',dining:'fa-utensils',tables:'fa-table',tvstands:'fa-tv',office:'fa-briefcase' };
+        const CAT_EMOJI = { bedroom:'🛏️',livingroom:'🛋️',chairs:'🪑',dining:'🍽️',tables:'📐',tvstands:'📺',office:'💼' };
+        const CAT_LABELS = { bedroom:'Bedroom',livingroom:'Living Room',chairs:'Chairs',dining:'Dining',tables:'Tables',tvstands:'TV Stands',office:'Office' };
         
-        // LOAD FROM SHEETDB
         async function loadProducts() {
             try {
+                console.log('Loading from SheetDB...');
                 const resp = await fetch(CONFIG.SHEETDB_API);
-                allProducts = await resp.json();
+                const text = await resp.text();
+                console.log('SheetDB Response:', text);
+                allProducts = JSON.parse(text);
+                console.log('Products loaded:', allProducts.length);
             } catch (e) {
+                console.error('Load error:', e);
                 allProducts = [];
             }
         }
         
-        function getImages(cat) {
-            return allProducts.filter(p => p.category === cat);
-        }
+        function getImages(cat) { return allProducts.filter(p => p.category === cat); }
         
-        // RENDER CATEGORIES
         function renderCategories() {
             const container = document.getElementById('categories-container');
-            container.innerHTML = CATEGORIES.map(cat => {
+            const cats = CATEGORIES.map(cat => {
                 const imgs = getImages(cat);
-                const firstImg = imgs.length > 0 ? imgs[0].url : null;
-                return `
-                <div class="category-card group relative bg-brand-cardBg border border-white/[0.04] p-4 rounded-xl flex flex-col items-center text-center" onclick="showCollection('${cat}')">
+                const img = imgs.length > 0 ? imgs[0].url : null;
+                return `<div class="category-card group relative bg-brand-cardBg border border-white/[0.04] p-4 rounded-xl flex flex-col items-center text-center" onclick="showCollection('${cat}')">
                     <div class="w-full aspect-[4/5] overflow-hidden mb-6 bg-[#0d0d0d] rounded-lg relative">
-                        ${firstImg ? `<img src="${firstImg}" alt="${CAT_LABELS[cat]}" class="category-card-img opacity-90">` : `<div class="w-full h-full flex items-center justify-center"><i class="fa-solid ${CAT_ICONS[cat]} text-5xl text-brand-gold/30"></i></div>`}
-                        <div class="view-collection-blinking">VIEW COLLECTION <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                        ${img ? `<img src="${img}" class="category-card-img opacity-90" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : ''}
+                        <div class="w-full h-full flex items-center justify-center" style="${img?'display:none':'display:flex'}"><i class="fa-solid ${CAT_ICONS[cat]} text-5xl text-brand-gold/30"></i></div>
+                        <div class="view-collection-blinking">VIEW <i class="fa-solid fa-arrow-right ml-1"></i></div>
                     </div>
-                    <div class="w-12 h-12 rounded-full bg-[#0a0a0a] border border-white/[0.06] flex items-center justify-center -mt-12 relative z-10 mb-4 shadow-xl"><i class="fa-solid ${CAT_ICONS[cat]} text-brand-gold"></i></div>
-                    <h3 class="font-serif text-lg font-semibold tracking-wide mb-1">${CAT_LABELS[cat]}</h3>
-                    <p class="text-brand-textMuted text-xs mb-3">${CAT_SUBS[cat]}</p>
-                    <span class="text-xs text-brand-gold font-medium">${CAT_EMOJI[cat]} ${imgs.length} items</span>
+                    <div class="w-12 h-12 rounded-full bg-[#0a0a0a] border border-white/[0.06] flex items-center justify-center -mt-12 z-10 mb-4"><i class="fa-solid ${CAT_ICONS[cat]} text-brand-gold"></i></div>
+                    <h3 class="font-serif text-lg font-semibold">${CAT_LABELS[cat]}</h3>
+                    <p class="text-brand-textMuted text-xs">${CAT_EMOJI[cat]} ${imgs.length} items</p>
                 </div>`;
             }).join('');
+            container.innerHTML = cats;
         }
         
-        // IMAGE VIEWER
         function openImageViewer(images, index) {
             currentViewerImages = images; currentViewerIndex = index;
             document.getElementById('viewer-image').src = images[index].url;
             document.getElementById('image-viewer').classList.add('active');
-            document.body.style.overflow = 'hidden';
         }
-        function closeImageViewer() { document.getElementById('image-viewer').classList.remove('active'); document.body.style.overflow = ''; }
+        function closeImageViewer() { document.getElementById('image-viewer').classList.remove('active'); }
         function navigateViewer(dir) {
             currentViewerIndex = (currentViewerIndex + dir + currentViewerImages.length) % currentViewerImages.length;
             document.getElementById('viewer-image').src = currentViewerImages[currentViewerIndex].url;
@@ -267,37 +250,28 @@
             if (e.key === 'ArrowRight') navigateViewer(1);
         });
         
-        // UPLOAD
         async function uploadImages() {
             if (selectedFiles.length === 0) { alert('Select images!'); return; }
             const cat = document.getElementById('upload-category').value;
+            document.getElementById('upload-progress').classList.remove('hidden');
             const bar = document.getElementById('progress-fill');
             const txt = document.getElementById('progress-text');
-            document.getElementById('upload-progress').classList.remove('hidden');
             
-            let count = 0;
             for (let i = 0; i < selectedFiles.length; i++) {
                 const fd = new FormData(); fd.append('image', selectedFiles[i]);
                 try {
                     const r = await fetch(`https://api.imgbb.com/1/upload?key=${CONFIG.IMGBB_API_KEY}`, { method: 'POST', body: fd });
                     const d = await r.json();
                     if (d.success) {
-                        // Save to SheetDB
                         await fetch(CONFIG.SHEETDB_API, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                id: Date.now() + Math.random(),
-                                category: cat,
-                                url: d.data.url,
-                                name: selectedFiles[i].name.replace(/\.[^/.]+$/, '')
-                            })
+                            body: JSON.stringify({ id: String(Date.now())+String(i), category: cat, url: d.data.url, name: selectedFiles[i].name.replace(/\.[^/.]+$/, '') })
                         });
-                        count++;
                     }
                     bar.style.width = ((i+1)/selectedFiles.length*100) + '%';
                     txt.textContent = `✅ ${i+1}/${selectedFiles.length}`;
-                } catch (e) { txt.textContent = `❌ Failed`; }
+                } catch (e) { txt.textContent = '❌ Error'; }
             }
             
             await loadProducts();
@@ -306,73 +280,59 @@
             selectedFiles = [];
             document.getElementById('upload-preview').innerHTML = '';
             document.getElementById('file-input').value = '';
-            alert(`✅ ${count} images saved! Everyone can see them now!`);
+            alert('✅ Done! Images are now visible to everyone!');
             showCollection(cat);
         }
         
         function handleFileSelect(e) {
             selectedFiles = Array.from(e.target.files);
-            document.getElementById('upload-preview').innerHTML = selectedFiles.map((f,i) => `<div class="relative"><img src="${URL.createObjectURL(f)}" class="w-full h-20 object-cover rounded-lg"></div>`).join('');
+            document.getElementById('upload-preview').innerHTML = selectedFiles.map(f => `<img src="${URL.createObjectURL(f)}" class="w-full h-20 object-cover rounded-lg">`).join('');
         }
         
-        // MANAGE
-        function showAdminTab(tab) {
-            document.getElementById('tab-upload').style.display = tab==='upload'?'block':'none';
-            document.getElementById('tab-manage').style.display = tab==='manage'?'block':'none';
-            document.getElementById('tab-upload-btn').className = tab==='upload'?'px-5 py-2.5 bg-brand-gold text-black rounded-lg text-sm font-semibold':'px-5 py-2.5 bg-white/5 text-white rounded-lg text-sm';
-            document.getElementById('tab-manage-btn').className = tab==='manage'?'px-5 py-2.5 bg-brand-gold text-black rounded-lg text-sm font-semibold':'px-5 py-2.5 bg-white/5 text-white rounded-lg text-sm';
-            if (tab === 'manage') buildManageUI();
+        function showTab(t) {
+            document.getElementById('tab-upload').style.display = t==='upload'?'block':'none';
+            document.getElementById('tab-manage').style.display = t==='manage'?'block':'none';
+            document.getElementById('tab-upload-btn').className = t==='upload'?'px-5 py-2.5 bg-brand-gold text-black rounded-lg text-sm font-semibold':'px-5 py-2.5 bg-white/5 text-white rounded-lg text-sm';
+            document.getElementById('tab-manage-btn').className = t==='manage'?'px-5 py-2.5 bg-brand-gold text-black rounded-lg text-sm font-semibold':'px-5 py-2.5 bg-white/5 text-white rounded-lg text-sm';
+            if (t==='manage') {
+                document.getElementById('manage-buttons').innerHTML = CATEGORIES.map(c => `<button onclick="showManage('${c}')" class="text-xs bg-white/5 px-3 py-2 rounded-lg">${CAT_EMOJI[c]} ${CAT_LABELS[c]}</button>`).join('');
+            }
         }
         
-        function buildManageUI() {
-            document.getElementById('manage-buttons').innerHTML = CATEGORIES.map(cat => 
-                `<button onclick="showManageImages('${cat}')" class="text-xs bg-white/5 px-3 py-2 rounded-lg">${CAT_EMOJI[cat]} ${CAT_LABELS[cat]}</button>`
-            ).join('');
-        }
-        
-        function showManageImages(cat) {
-            const c = document.getElementById('manage-images');
+        function showManage(cat) {
             const imgs = getImages(cat);
-            c.innerHTML = imgs.length === 0 ? '<p class="text-brand-textMuted text-sm text-center py-6">No images</p>' :
-                imgs.map(img => `<div class="relative"><img src="${img.url}" class="w-full h-20 object-cover rounded-lg"><button class="absolute top-1 right-1 bg-red-500 text-white w-5 h-5 rounded-full text-xs" onclick="deleteImage('${img.id}')">×</button></div>`).join('');
+            document.getElementById('manage-images').innerHTML = imgs.length===0 ? '<p class="text-brand-textMuted text-sm text-center py-6">No images</p>' : imgs.map(i => `<div class="relative"><img src="${i.url}" class="w-full h-20 object-cover rounded-lg"><button class="absolute top-1 right-1 bg-red-500 text-white w-5 h-5 rounded-full text-xs" onclick="delImg('${i.id}')">×</button></div>`).join('');
         }
         
-        async function deleteImage(id) {
+        async function delImg(id) {
             if (!confirm('Delete?')) return;
             await fetch(`${CONFIG.SHEETDB_API}/id/${id}`, { method: 'DELETE' });
             await loadProducts();
-            showManageImages(document.getElementById('upload-category').value);
             showHome();
         }
         
-        // AUTH
         function adminLogin() {
             if (document.getElementById('admin-password').value === CONFIG.ADMIN_PASSWORD) {
                 isAdmin = true;
                 document.getElementById('login-modal').classList.remove('active');
                 document.getElementById('admin-panel').classList.add('active');
                 document.getElementById('login-error').classList.add('hidden');
-                showAdminTab('upload');
-            } else {
-                document.getElementById('login-error').classList.remove('hidden');
-            }
+                showTab('upload');
+            } else { document.getElementById('login-error').classList.remove('hidden'); }
         }
         function closeAdminPanel() { document.getElementById('admin-panel').classList.remove('active'); }
         function openLoginModal() {
-            if (isAdmin) { document.getElementById('admin-panel').classList.add('active'); showAdminTab('upload'); }
+            if (isAdmin) { document.getElementById('admin-panel').classList.add('active'); showTab('upload'); }
             else { document.getElementById('login-modal').classList.add('active'); document.getElementById('login-error').classList.add('hidden'); }
         }
         
-        // RENDER COLLECTION
         function renderCollection(cid, cat) {
             const c = document.getElementById(cid);
             if (!c) return;
             const imgs = getImages(cat);
-            c.innerHTML = imgs.length === 0 ? `<div class="col-span-full text-center py-20"><i class="fa-solid fa-image text-5xl text-brand-gold/20 mb-5 block"></i><p class="text-brand-textMuted text-lg">No images yet</p></div>` :
-                imgs.map((img,i) => `<div class="product-card group bg-brand-cardBg border border-white/[0.04] p-3 rounded-xl flex flex-col" onclick="openImageViewer(getImages('${cat}'),${i})"><div class="w-full aspect-[4/3] overflow-hidden bg-[#0d0d0d] mb-4 rounded-lg"><img src="${img.url}" alt="${img.name}" class="w-full h-full object-cover opacity-90" loading="lazy"></div><h3 class="text-xs font-medium text-white/85 px-1">${(img.name||'Furniture').replace(/[-_]/g,' ')}</h3></div>`).join('');
+            c.innerHTML = imgs.length===0 ? `<div class="col-span-full text-center py-20"><i class="fa-solid fa-image text-5xl text-brand-gold/20 mb-5 block"></i><p class="text-brand-textMuted text-lg">No images yet</p></div>` : imgs.map((img,i) => `<div class="product-card group bg-brand-cardBg border border-white/[0.04] p-3 rounded-xl" onclick="openImageViewer(getImages('${cat}'),${i})"><div class="w-full aspect-[4/3] overflow-hidden bg-[#0d0d0d] mb-4 rounded-lg"><img src="${img.url}" class="w-full h-full object-cover opacity-90" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300/1a1a1a/c9a84c?text=Image'"></div><h3 class="text-xs text-white/85 px-1">${(img.name||'Furniture').replace(/[-_]/g,' ')}</h3></div>`).join('');
         }
         
-        // NAVIGATION
         function showCollection(cat) {
             document.querySelectorAll('.collection-section').forEach(el => el.classList.remove('active'));
             ['home-section','home-section2','home-section3','ceo-contact'].forEach(id => { const el = document.getElementById(id); if(el) el.style.display='none'; });
@@ -395,21 +355,12 @@
         document.addEventListener('click', e => { if(e.target.classList.contains('modal')) e.target.classList.remove('active'); });
         document.addEventListener('DOMContentLoaded', () => showHome());
         
-        // GLOBAL
-        window.showCollection = showCollection;
-        window.showHome = showHome;
-        window.adminLogin = adminLogin;
-        window.openLoginModal = openLoginModal;
-        window.closeAdminPanel = closeAdminPanel;
-        window.uploadImages = uploadImages;
-        window.handleFileSelect = handleFileSelect;
-        window.deleteImage = deleteImage;
-        window.showManageImages = showManageImages;
-        window.showAdminTab = showAdminTab;
-        window.openImageViewer = openImageViewer;
-        window.closeImageViewer = closeImageViewer;
-        window.navigateViewer = navigateViewer;
-        window.getImages = getImages;
+        window.showCollection=showCollection;window.showHome=showHome;window.adminLogin=adminLogin;
+        window.openLoginModal=openLoginModal;window.closeAdminPanel=closeAdminPanel;
+        window.uploadImages=uploadImages;window.handleFileSelect=handleFileSelect;
+        window.delImg=delImg;window.showManage=showManage;window.showTab=showTab;
+        window.openImageViewer=openImageViewer;window.closeImageViewer=closeImageViewer;
+        window.navigateViewer=navigateViewer;window.getImages=getImages;
     </script>
 </body>
 </html>
