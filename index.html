@@ -15,8 +15,6 @@
                     colors: {
                         brand: {
                             gold: '#c9a84c',
-                            goldLight: '#d4b86a',
-                            goldDark: '#a88a2e',
                             goldHover: '#b8943a',
                             darkBg: '#080808',
                             cardBg: '#111111',
@@ -26,20 +24,6 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
-                    },
-                    animation: {
-                        'fadeIn': 'fadeIn 0.4s ease-out',
-                        'blink': 'blink 1.2s ease-in-out infinite',
-                        'pulse-gold': 'pulseGold 2s ease-in-out infinite',
-                        'glow': 'glow 3s ease-in-out infinite',
-                        'float': 'float 3s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        blink: { '0%, 100%': { opacity: '1' }, '50%': { opacity: '0.2' } },
-                        pulseGold: { '0%, 100%': { boxShadow: '0 0 5px rgba(201,168,76,0.3)' }, '50%': { boxShadow: '0 0 20px rgba(201,168,76,0.8)' } },
-                        glow: { '0%, 100%': { textShadow: '0 0 10px rgba(201,168,76,0.5)' }, '50%': { textShadow: '0 0 20px rgba(201,168,76,0.8)' } },
-                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-6px)' } },
                     }
                 }
             }
@@ -49,318 +33,332 @@
             IMGBB_API_KEY: 'a408161fc9da7f32e63c081974794882',
             ADMIN_PASSWORD: 'tochukwu',
             CEO_PHONE: '2349135357118',
-            CEO_NAME: 'Tochukwu',
             SHEETDB_API: 'https://sheetdb.io/api/v1/do2vt832snpzd'
         };
     </script>
     
     <style>
-        :root { --gold: #c9a84c; }
-        * { scroll-behavior: smooth; }
-        body { background-color: #080808; color: #ffffff; -webkit-font-smoothing: antialiased; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 3px; }
+        body { background-color: #080808; color: #fff; font-family: 'Inter', sans-serif; }
+        .logo-main { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2rem; letter-spacing: 0.2em; background: linear-gradient(180deg, #f7e08a, #c9a84c, #a88a2e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo-border { border: 2px solid #c9a84c; box-shadow: 0 0 15px rgba(201,168,76,0.3); padding: 0.3rem 1.2rem; border-radius: 4px; }
+        .logo-subtitle { font-size: 0.55rem; letter-spacing: 0.35em; color: #c9a84c; margin-top: 0.4rem; }
         
-        .logo-container { position: relative; display: inline-block; animation: float 3s ease-in-out infinite; }
-        .logo-main { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2.25rem; letter-spacing: 0.22em; background: linear-gradient(180deg, #f7e08a, #c9a84c, #a88a2e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 8px rgba(201,168,76,0.4)); animation: glow 3s ease-in-out infinite; }
-        .logo-border { border: 2.5px solid; border-image: linear-gradient(135deg, #a88a2e, #c9a84c, #d4b86a, #c9a84c, #a88a2e) 1; box-shadow: 0 0 20px rgba(201,168,76,0.2); border-radius: 6px; padding: 0.3rem 1.5rem; transition: all 0.5s; position: relative; overflow: hidden; }
-        .logo-border::before { content: ''; position: absolute; top: -1px; left: -100%; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent); animation: logoShine 3s ease-in-out infinite; }
-        @keyframes logoShine { 0% { left: -100%; } 50% { left: 100%; } 100% { left: 100%; } }
-        .logo-border:hover { box-shadow: 0 0 30px rgba(201,168,76,0.4); transform: scale(1.02); }
-        .logo-subtitle { letter-spacing: 0.4em; font-weight: 700; font-size: 0.6rem; background: linear-gradient(90deg, #a88a2e, #c9a84c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: 0.5rem; }
-        .logo-diamond { position: absolute; width: 8px; height: 8px; background: #c9a84c; transform: rotate(45deg); animation: diamondPulse 2s ease-in-out infinite; }
-        .logo-diamond.top-left { top: -4px; left: -4px; }
-        .logo-diamond.top-right { top: -4px; right: -4px; animation-delay: 0.5s; }
-        .logo-diamond.bottom-left { bottom: -4px; left: -4px; animation-delay: 1s; }
-        .logo-diamond.bottom-right { bottom: -4px; right: -4px; animation-delay: 1.5s; }
-        @keyframes diamondPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+        .product-card { cursor: pointer; transition: all 0.3s; }
+        .product-card:hover { transform: translateY(-5px); }
         
-        .view-collection-blinking { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 10; background: rgba(0,0,0,0.85); color: #fff; padding: 10px 22px; border-radius: 30px; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; border: 2px solid #c9a84c; animation: blink 1.2s ease-in-out infinite, pulseGold 2s ease-in-out infinite; white-space: nowrap; pointer-events: none; }
-        
-        .gold-text { background: linear-gradient(135deg, #d4b86a, #c9a84c, #f5d782, #a88a2e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gold-underline::after { content: ''; display: block; width: 50px; height: 3px; background: linear-gradient(90deg, transparent, #c9a84c, transparent); margin: 14px auto 0; }
-        
-        .product-card { transition: all 0.4s; cursor: pointer; }
-        .product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .product-card:hover img { transform: scale(1.06); }
-        .product-card img { transition: transform 0.6s; }
-        
-        .category-card { transition: all 0.4s; cursor: pointer; position: relative; }
-        .category-card:hover { transform: translateY(-6px); box-shadow: 0 25px 50px rgba(0,0,0,0.6); }
-        
-        .collection-section { display: none; animation: fadeIn 0.5s ease-out; }
+        .collection-section { display: none; }
         .collection-section.active { display: block; }
-        
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.75rem; }
-        @media (max-width: 640px) { .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; } }
         
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center; }
         .modal.active { display: flex; }
-        .modal-content { background: #141414; border: 1px solid #222; border-radius: 16px; padding: 32px; max-width: 520px; width: 92%; max-height: 90vh; overflow-y: auto; }
+        .modal-content { background: #1a1a1a; border: 1px solid #c9a84c; border-radius: 12px; padding: 24px; max-width: 500px; width: 90%; max-height: 85vh; overflow-y: auto; }
         
-        .image-viewer-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center; cursor: zoom-out; }
+        .image-viewer-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center; }
         .image-viewer-overlay.active { display: flex; }
-        .image-viewer-overlay img { max-width: 92%; max-height: 92vh; object-fit: contain; border-radius: 4px; }
-        .image-viewer-close { position: fixed; top: 20px; right: 30px; color: #fff; font-size: 36px; cursor: pointer; z-index: 100000; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border-radius: 50%; }
-        .image-viewer-close:hover { background: rgba(255,255,255,0.15); }
-        .image-viewer-nav { position: fixed; top: 50%; transform: translateY(-50%); color: #fff; font-size: 28px; cursor: pointer; z-index: 100000; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border-radius: 50%; }
-        .image-viewer-prev { left: 20px; }
-        .image-viewer-next { right: 20px; }
+        .image-viewer-overlay img { max-width: 90%; max-height: 90vh; object-fit: contain; }
         
-        .upload-area { border: 2px dashed #c9a84c; border-radius: 12px; padding: 32px; text-align: center; cursor: pointer; background: rgba(201,168,76,0.02); }
-        .upload-area:hover { background: rgba(201,168,76,0.06); }
-        .progress-bar { width: 100%; height: 4px; background: #1a1a1a; border-radius: 2px; margin-top: 10px; overflow: hidden; }
-        .progress-fill { height: 100%; background: #c9a84c; width: 0%; transition: width 0.4s; }
+        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: #fff; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; z-index: 999; text-decoration: none; }
         
-        .whatsapp-float { position: fixed; bottom: 28px; right: 28px; background: #25D366; color: white; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 8px 25px rgba(37,211,102,0.35); z-index: 999; text-decoration: none; }
-        .whatsapp-float:hover { transform: scale(1.08); }
+        .btn-gold { background: #c9a84c; color: #000; font-weight: 600; padding: 12px 24px; border-radius: 8px; border: none; cursor: pointer; }
+        .btn-gold:hover { background: #d4b86a; }
         
-        .hero-bg { background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1920'); background-size: cover; background-position: center; }
-        .btn-gold { background: linear-gradient(135deg, #a88a2e, #c9a84c); border: none; color: #000; font-weight: 600; padding: 14px 28px; border-radius: 10px; cursor: pointer; transition: all 0.3s; }
-        .btn-gold:hover { background: linear-gradient(135deg, #c9a84c, #d4b86a); transform: translateY(-2px); }
+        .view-collection-blinking { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: #fff; padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 0.7rem; border: 1px solid #c9a84c; animation: blink 1.2s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
         
-        .category-card-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; transition: transform 0.6s; }
+        .hero-bg { background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920'); background-size: cover; background-position: center; }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body>
 
     <!-- HEADER -->
-    <header class="border-b border-white/[0.04] bg-[#080808]/95 backdrop-blur-xl sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-6 h-28 flex items-center justify-between">
-            <a href="#" class="logo-container flex flex-col items-center" onclick="showHome(); return false;">
-                <div class="logo-border relative">
-                    <span class="logo-diamond top-left"></span><span class="logo-diamond top-right"></span>
-                    <span class="logo-diamond bottom-left"></span><span class="logo-diamond bottom-right"></span>
-                    <span class="logo-main">TCWF</span>
-                </div>
-                <span class="logo-subtitle uppercase">Classic World Furniture</span>
+    <header style="background:#080808;border-bottom:1px solid #1a1a1a;position:sticky;top:0;z-index:50;padding:0 20px;">
+        <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:90px;">
+            <a href="#" onclick="showHome();return false;" style="text-decoration:none;text-align:center;">
+                <div class="logo-border"><span class="logo-main">TCWF</span></div>
+                <div class="logo-subtitle">CLASSIC WORLD FURNITURE</div>
             </a>
-            <nav class="hidden md:flex items-center space-x-5 text-sm font-medium">
-                <a href="#" class="text-brand-gold" onclick="showHome(); return false;">Home</a>
-                <a href="#" class="text-white/75 hover:text-brand-gold transition" onclick="showCollection('bedroom'); return false;">Beds</a>
-                <a href="#" class="text-white/75 hover:text-brand-gold transition" onclick="showCollection('livingroom'); return false;">Sofas</a>
-                <a href="#" class="text-white/75 hover:text-brand-gold transition" onclick="showCollection('chairs'); return false;">Chairs</a>
-                <a href="#" class="text-white/75 hover:text-brand-gold transition" onclick="showCollection('dining'); return false;">Dining</a>
-                <a href="#" class="text-white/75 hover:text-brand-gold transition" onclick="showCollection('tables'); return false;">Tables</a>
-                <a href="#" class="text-white/75 hover:text-brand-gold transition" onclick="showCollection('tvstands'); return false;">TV Stands</a>
-                <a href="#" class="text-white/75 hover:text-brand-gold transition" onclick="showCollection('office'); return false;">Office</a>
+            <nav style="display:flex;gap:20px;font-size:0.85rem;font-weight:500;">
+                <a href="#" onclick="showHome();return false;" style="color:#c9a84c;">Home</a>
+                <a href="#" onclick="showCollection('bedroom');return false;" style="color:#aaa;">Beds</a>
+                <a href="#" onclick="showCollection('livingroom');return false;" style="color:#aaa;">Sofas</a>
+                <a href="#" onclick="showCollection('chairs');return false;" style="color:#aaa;">Chairs</a>
+                <a href="#" onclick="showCollection('dining');return false;" style="color:#aaa;">Dining</a>
+                <a href="#" onclick="showCollection('tables');return false;" style="color:#aaa;">Tables</a>
+                <a href="#" onclick="showCollection('tvstands');return false;" style="color:#aaa;">TV Stands</a>
+                <a href="#" onclick="showCollection('office');return false;" style="color:#aaa;">Office</a>
             </nav>
-            <div class="flex items-center space-x-4 text-white/85">
-                <button onclick="openLoginModal()" class="text-xs border border-brand-gold/40 px-3 py-2 rounded-md"><i class="fa-solid fa-lock mr-1"></i> Admin</button>
-                <a href="https://wa.me/2349135357118" target="_blank" class="hover:text-green-400 text-lg"><i class="fa-brands fa-whatsapp"></i></a>
+            <div>
+                <button onclick="openLogin()" style="background:transparent;border:1px solid #c9a84c;color:#c9a84c;padding:6px 14px;border-radius:6px;font-size:0.8rem;cursor:pointer;">🔐 Admin</button>
             </div>
         </div>
     </header>
 
-    <!-- LOGIN -->
-    <div id="login-modal" class="modal"><div class="modal-content"><h3 class="text-brand-gold text-2xl font-serif font-bold mb-3">🔐 Admin</h3><input type="password" id="admin-password" placeholder="Password" class="w-full bg-[#0a0a0a] border border-white/10 text-white px-4 py-3.5 rounded-lg mb-4"><button onclick="adminLogin()" class="w-full btn-gold">Login</button><p id="login-error" class="text-red-400 text-sm mt-3 hidden">❌ Wrong!</p><button onclick="document.getElementById('login-modal').classList.remove('active')" class="w-full text-brand-textMuted text-sm mt-4">Cancel</button></div></div>
+    <!-- LOGIN MODAL -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h3 style="color:#c9a84c;font-size:1.5rem;margin-bottom:15px;">Admin Login</h3>
+            <input type="password" id="admin-pass" placeholder="Password" style="width:100%;padding:12px;background:#000;border:1px solid #333;color:#fff;border-radius:8px;margin-bottom:12px;">
+            <button onclick="adminLogin()" class="btn-gold" style="width:100%;">Login</button>
+            <p id="login-error" style="color:red;font-size:0.8rem;margin-top:10px;display:none;">Wrong password!</p>
+            <button onclick="document.getElementById('login-modal').classList.remove('active')" style="width:100%;color:#aaa;background:none;border:none;margin-top:10px;cursor:pointer;">Cancel</button>
+        </div>
+    </div>
 
-    <!-- ADMIN -->
-    <div id="admin-panel" class="modal"><div class="modal-content" style="max-width:820px;"><div class="flex justify-between items-center mb-6"><h3 class="text-brand-gold text-2xl font-serif font-bold">⚙️ Admin</h3><button onclick="closeAdminPanel()" class="text-white/60 text-2xl hover:text-red-400">&times;</button></div><div class="flex gap-2 mb-6"><button onclick="showTab('upload')" id="tab-upload-btn" class="px-5 py-2.5 bg-brand-gold text-black rounded-lg text-sm font-semibold">📤 Upload</button><button onclick="showTab('manage')" id="tab-manage-btn" class="px-5 py-2.5 bg-white/5 text-white rounded-lg text-sm">📋 Manage</button></div><div id="tab-upload"><select id="upload-category" class="w-full bg-[#0a0a0a] border border-white/10 text-white px-4 py-3 rounded-lg mb-5"><option value="bedroom">🛏️ Bedroom</option><option value="livingroom">🛋️ Living Room</option><option value="chairs">🪑 Chairs</option><option value="dining">🍽️ Dining</option><option value="tables">📐 Tables</option><option value="tvstands">📺 TV Stands</option><option value="office">💼 Office</option></select><div class="upload-area mb-4" onclick="document.getElementById('file-input').click()"><i class="fa-solid fa-cloud-arrow-up text-4xl text-brand-gold mb-3"></i><p class="text-white">Click to select images</p><input type="file" id="file-input" multiple accept="image/*" style="display:none" onchange="handleFileSelect(event)"></div><div id="upload-preview" class="grid grid-cols-4 gap-2 mb-4"></div><div id="upload-progress" class="hidden mb-4"><div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div><p id="progress-text" class="text-brand-textMuted text-xs mt-2">Uploading...</p></div><button onclick="uploadImages()" class="w-full btn-gold">📤 Upload & Save</button></div><div id="tab-manage" style="display:none;"><div class="flex gap-2 mb-4 flex-wrap" id="manage-buttons"></div><div id="manage-images" class="grid grid-cols-3 gap-2 max-h-64 overflow-y-auto"></div></div><button onclick="closeAdminPanel()" class="w-full text-brand-textMuted text-sm mt-5">Close</button></div></div>
+    <!-- ADMIN PANEL -->
+    <div id="admin-panel" class="modal">
+        <div class="modal-content" style="max-width:700px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                <h3 style="color:#c9a84c;font-size:1.3rem;">Admin Panel</h3>
+                <button onclick="document.getElementById('admin-panel').classList.remove('active')" style="color:#fff;font-size:1.5rem;background:none;border:none;cursor:pointer;">&times;</button>
+            </div>
+            
+            <select id="upload-cat" style="width:100%;padding:12px;background:#000;border:1px solid #333;color:#fff;border-radius:8px;margin-bottom:15px;">
+                <option value="bedroom">🛏️ Bedroom</option>
+                <option value="livingroom">🛋️ Living Room</option>
+                <option value="chairs">🪑 Chairs</option>
+                <option value="dining">🍽️ Dining</option>
+                <option value="tables">📐 Tables</option>
+                <option value="tvstands">📺 TV Stands</option>
+                <option value="office">💼 Office</option>
+            </select>
+            
+            <div onclick="document.getElementById('file-input').click()" style="border:2px dashed #c9a84c;padding:30px;text-align:center;border-radius:12px;cursor:pointer;margin-bottom:15px;">
+                <p style="color:#fff;">📁 Click to select images</p>
+                <input type="file" id="file-input" multiple accept="image/*" style="display:none;" onchange="previewFiles()">
+            </div>
+            
+            <div id="preview-container" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px;"></div>
+            
+            <div id="progress-container" style="display:none;margin-bottom:15px;">
+                <div style="background:#333;height:4px;border-radius:2px;"><div id="progress-bar" style="background:#c9a84c;height:100%;width:0%;border-radius:2px;"></div></div>
+                <p id="progress-text" style="color:#aaa;font-size:0.8rem;margin-top:5px;"></p>
+            </div>
+            
+            <button onclick="uploadAll()" class="btn-gold" style="width:100%;">📤 Upload Images</button>
+            
+            <div style="margin-top:20px;border-top:1px solid #333;padding-top:15px;">
+                <p style="color:#fff;margin-bottom:10px;">Delete all data:</p>
+                <button onclick="clearAll()" style="background:red;color:#fff;border:none;padding:10px;border-radius:8px;width:100%;cursor:pointer;">🗑️ Clear All Images</button>
+            </div>
+        </div>
+    </div>
 
     <!-- IMAGE VIEWER -->
-    <div id="image-viewer" class="image-viewer-overlay" onclick="closeImageViewer()"><span class="image-viewer-close">&times;</span><span class="image-viewer-nav image-viewer-prev" onclick="event.stopPropagation();navigateViewer(-1)"><i class="fa-solid fa-chevron-left"></i></span><span class="image-viewer-nav image-viewer-next" onclick="event.stopPropagation();navigateViewer(1)"><i class="fa-solid fa-chevron-right"></i></span><img id="viewer-image" src="" onclick="event.stopPropagation()"></div>
+    <div id="viewer" class="image-viewer-overlay" onclick="closeViewer()">
+        <span onclick="closeViewer()" style="position:fixed;top:20px;right:30px;color:#fff;font-size:2rem;cursor:pointer;z-index:100001;">&times;</span>
+        <img id="viewer-img" src="" onclick="event.stopPropagation()">
+    </div>
 
     <!-- HERO -->
-    <section id="home-section" class="relative min-h-[calc(100vh-7rem)] flex items-center hero-bg overflow-hidden"><div class="absolute inset-0 z-0 bg-gradient-to-r from-[#080808] via-[#080808]/80 to-[#080808]/20"></div><div class="relative z-10 max-w-7xl mx-auto px-6 w-full py-20"><div class="max-w-xl"><p class="text-brand-gold text-xs uppercase tracking-[0.3em] mb-4 font-semibold">Premium Furniture</p><h1 class="font-serif text-5xl md:text-7xl leading-[1.1] mb-6 font-bold">Crafted for<br><span class="gold-text italic">Comfort.</span></h1><p class="text-brand-textMuted text-base md:text-lg mb-10 max-w-sm">Timeless designs that elevate your space.</p><a href="#" class="btn-gold inline-flex items-center space-x-3"><span>Explore</span><i class="fa-solid fa-arrow-right text-xs"></i></a></div></div></section>
-
-    <!-- TRUST -->
-    <section id="home-section2" class="bg-[#0a0a0a] border-y border-white/[0.03] py-12"><div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8"><div class="flex items-start space-x-4"><div class="w-10 h-10 rounded-lg bg-brand-gold/10 flex items-center justify-center"><i class="fa-solid fa-award text-lg text-brand-gold"></i></div><div><h4 class="text-sm font-semibold">Premium Quality</h4><p class="text-xs text-brand-textMuted">Finest materials</p></div></div><div class="flex items-start space-x-4"><div class="w-10 h-10 rounded-lg bg-brand-gold/10 flex items-center justify-center"><i class="fa-solid fa-compass-drafting text-lg text-brand-gold"></i></div><div><h4 class="text-sm font-semibold">Custom Made</h4><p class="text-xs text-brand-textMuted">Tailored to you</p></div></div><div class="flex items-start space-x-4"><div class="w-10 h-10 rounded-lg bg-brand-gold/10 flex items-center justify-center"><i class="fa-solid fa-truck-fast text-lg text-brand-gold"></i></div><div><h4 class="text-sm font-semibold">Free Delivery</h4><p class="text-xs text-brand-textMuted">Fast & reliable</p></div></div><div class="flex items-start space-x-4"><div class="w-10 h-10 rounded-lg bg-brand-gold/10 flex items-center justify-center"><i class="fa-solid fa-shield-check text-lg text-brand-gold"></i></div><div><h4 class="text-sm font-semibold">Secure Payment</h4><p class="text-xs text-brand-textMuted">100% protected</p></div></div></div></section>
+    <section id="home-section" class="hero-bg" style="min-height:80vh;display:flex;align-items:center;padding:60px 20px;">
+        <div style="max-width:600px;">
+            <p style="color:#c9a84c;text-transform:uppercase;letter-spacing:0.2em;font-size:0.8rem;">Premium Furniture</p>
+            <h1 style="font-family:'Playfair Display',serif;font-size:3.5rem;line-height:1.1;margin:10px 0;">Crafted for <span style="background:linear-gradient(135deg,#d4b86a,#c9a84c,#a88a2e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Comfort.</span></h1>
+            <p style="color:#aaa;margin-bottom:30px;">Timeless furniture designs for your home.</p>
+            <a href="#" class="btn-gold" style="text-decoration:none;display:inline-block;">Explore Collection →</a>
+        </div>
+    </section>
 
     <!-- CATEGORIES -->
-    <section id="home-section3" class="max-w-7xl mx-auto px-6 py-24"><p class="text-brand-gold text-xs uppercase tracking-[0.3em] text-center mb-3 font-semibold">Browse</p><h2 class="font-serif text-4xl text-center gold-underline mb-16 font-bold">Shop By Category</h2><div id="categories-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"><div class="col-span-full text-center py-10"><i class="fa-solid fa-spinner fa-spin text-3xl text-brand-gold"></i><p class="text-brand-textMuted mt-3">Loading products...</p></div></div></section>
+    <section id="home-section3" style="max-width:1200px;margin:0 auto;padding:60px 20px;">
+        <h2 style="text-align:center;font-family:'Playfair Display',serif;font-size:2.5rem;margin-bottom:40px;">Shop By Category</h2>
+        <div id="categories-container" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;">
+            <p style="color:#aaa;text-align:center;grid-column:1/-1;">Loading...</p>
+        </div>
+    </section>
 
     <!-- COLLECTIONS -->
-    <div id="bedroom-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">🛏️ Bedroom</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="bedroom-products"></div></div>
-    <div id="livingroom-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">🛋️ Living Room</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="livingroom-products"></div></div>
-    <div id="chairs-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">🪑 Chairs</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="chairs-products"></div></div>
-    <div id="dining-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">🍽️ Dining</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="dining-products"></div></div>
-    <div id="tables-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">📐 Tables</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="tables-products"></div></div>
-    <div id="tvstands-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">📺 TV Stands</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="tvstands-products"></div></div>
-    <div id="office-collection" class="collection-section max-w-7xl mx-auto px-6 py-16"><div class="flex items-center justify-between mb-12"><h2 class="font-serif text-3xl font-bold">💼 Office</h2><button onclick="showHome()" class="text-brand-gold text-sm"><i class="fa-solid fa-arrow-left"></i> Home</button></div><div class="product-grid" id="office-products"></div></div>
+    <div id="bedroom-collection" class="collection-section" style="max-width:1200px;margin:0 auto;padding:40px 20px;"><h2 style="font-family:'Playfair Display',serif;font-size:2rem;">🛏️ Bedroom</h2><button onclick="showHome()" style="color:#c9a84c;background:none;border:none;cursor:pointer;margin-bottom:20px;">← Back</button><div class="product-grid" id="bedroom-products"></div></div>
+    <div id="livingroom-collection" class="collection-section" style="max-width:1200px;margin:0 auto;padding:40px 20px;"><h2 style="font-family:'Playfair Display',serif;font-size:2rem;">🛋️ Living Room</h2><button onclick="showHome()" style="color:#c9a84c;background:none;border:none;cursor:pointer;margin-bottom:20px;">← Back</button><div class="product-grid" id="livingroom-products"></div></div>
+    <div id="chairs-collection" class="collection-section" style="max-width:1200px;margin:0 auto;padding:40px 20px;"><h2 style="font-family:'Playfair Display',serif;font-size:2rem;">🪑 Chairs</h2><button onclick="showHome()" style="color:#c9a84c;background:none;border:none;cursor:pointer;margin-bottom:20px;">← Back</button><div class="product-grid" id="chairs-products"></div></div>
+    <div id="dining-collection" class="collection-section" style="max-width:1200px;margin:0 auto;padding:40px 20px;"><h2 style="font-family:'Playfair Display',serif;font-size:2rem;">🍽️ Dining</h2><button onclick="showHome()" style="color:#c9a84c;background:none;border:none;cursor:pointer;margin-bottom:20px;">← Back</button><div class="product-grid" id="dining-products"></div></div>
+    <div id="tables-collection" class="collection-section" style="max-width:1200px;margin:0 auto;padding:40px 20px;"><h2 style="font-family:'Playfair Display',serif;font-size:2rem;">📐 Tables</h2><button onclick="showHome()" style="color:#c9a84c;background:none;border:none;cursor:pointer;margin-bottom:20px;">← Back</button><div class="product-grid" id="tables-products"></div></div>
+    <div id="tvstands-collection" class="collection-section" style="max-width:1200px;margin:0 auto;padding:40px 20px;"><h2 style="font-family:'Playfair Display',serif;font-size:2rem;">📺 TV Stands</h2><button onclick="showHome()" style="color:#c9a84c;background:none;border:none;cursor:pointer;margin-bottom:20px;">← Back</button><div class="product-grid" id="tvstands-products"></div></div>
+    <div id="office-collection" class="collection-section" style="max-width:1200px;margin:0 auto;padding:40px 20px;"><h2 style="font-family:'Playfair Display',serif;font-size:2rem;">💼 Office</h2><button onclick="showHome()" style="color:#c9a84c;background:none;border:none;cursor:pointer;margin-bottom:20px;">← Back</button><div class="product-grid" id="office-products"></div></div>
 
-    <!-- CEO -->
-    <section id="ceo-contact" class="max-w-7xl mx-auto px-6 py-10 border-t border-white/[0.03]"><div class="bg-brand-cardBg rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-5"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-full bg-green-500/10 flex items-center justify-center"><i class="fa-brands fa-whatsapp text-2xl text-green-400"></i></div><div><p class="text-xs text-brand-textMuted">Contact CEO</p><p class="text-xl font-bold">Tochukwu</p><p class="text-sm text-brand-gold">09135357118</p></div></div><a href="https://wa.me/2349135357118" target="_blank" class="bg-green-500 text-white px-7 py-3.5 rounded-lg font-semibold"><i class="fa-brands fa-whatsapp text-lg mr-2"></i>Chat on WhatsApp</a></div></section>
+    <!-- CONTACT -->
+    <section style="max-width:1200px;margin:40px auto;padding:20px;border-top:1px solid #1a1a1a;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;background:#111;padding:25px;border-radius:12px;">
+            <div>
+                <p style="color:#aaa;font-size:0.8rem;">Contact CEO</p>
+                <p style="font-size:1.3rem;font-weight:bold;">Tochukwu</p>
+                <p style="color:#c9a84c;">09135357118</p>
+            </div>
+            <a href="https://wa.me/2349135357118" target="_blank" style="background:#25D366;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;">💬 Chat on WhatsApp</a>
+        </div>
+    </section>
 
-    <footer class="bg-[#060606] py-14 mt-8 text-center"><p class="text-[11px] text-white/30">© 2026 TCWF | CEO: Tochukwu | 09135357118</p></footer>
-    <a href="https://wa.me/2349135357118" target="_blank" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
+    <footer style="text-align:center;padding:30px;color:#555;font-size:0.8rem;">© 2026 TCWF | CEO: Tochukwu | 09135357118</footer>
+    <a href="https://wa.me/2349135357118" target="_blank" class="whatsapp-float">💬</a>
 
     <script>
-        let isAdmin = false;
+        // SIMPLE WORKING VERSION
+        let allData = [];
         let selectedFiles = [];
-        let allProducts = [];
-        let currentViewerImages = [];
-        let currentViewerIndex = 0;
         
-        const CATEGORIES = ['bedroom','livingroom','chairs','dining','tables','tvstands','office'];
-        const CAT_ICONS = { bedroom:'fa-bed',livingroom:'fa-couch',chairs:'fa-chair',dining:'fa-utensils',tables:'fa-table',tvstands:'fa-tv',office:'fa-briefcase' };
-        const CAT_EMOJI = { bedroom:'🛏️',livingroom:'🛋️',chairs:'🪑',dining:'🍽️',tables:'📐',tvstands:'📺',office:'💼' };
-        const CAT_LABELS = { bedroom:'Bedroom',livingroom:'Living Room',chairs:'Chairs',dining:'Dining',tables:'Tables',tvstands:'TV Stands',office:'Office' };
-        
-        async function loadProducts() {
+        async function loadData() {
             try {
-                console.log('Loading from SheetDB...');
-                const resp = await fetch(CONFIG.SHEETDB_API);
-                const text = await resp.text();
-                console.log('SheetDB Response:', text);
-                allProducts = JSON.parse(text);
-                console.log('Products loaded:', allProducts.length);
-            } catch (e) {
+                const r = await fetch(CONFIG.SHEETDB_API);
+                allData = await r.json();
+                // Fix empty category
+                allData = allData.map(item => ({
+                    ...item,
+                    category: item.category || item['category '] || 'uncategorized'
+                }));
+                console.log('✅ Loaded', allData.length, 'items');
+            } catch(e) {
                 console.error('Load error:', e);
-                allProducts = [];
+                allData = [];
             }
         }
         
-        function getImages(cat) { return allProducts.filter(p => p.category === cat); }
+        function getByCategory(cat) {
+            return allData.filter(item => item.category === cat);
+        }
         
         function renderCategories() {
-            const container = document.getElementById('categories-container');
-            const cats = CATEGORIES.map(cat => {
-                const imgs = getImages(cat);
-                const img = imgs.length > 0 ? imgs[0].url : null;
-                return `<div class="category-card group relative bg-brand-cardBg border border-white/[0.04] p-4 rounded-xl flex flex-col items-center text-center" onclick="showCollection('${cat}')">
-                    <div class="w-full aspect-[4/5] overflow-hidden mb-6 bg-[#0d0d0d] rounded-lg relative">
-                        ${img ? `<img src="${img}" class="category-card-img opacity-90" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : ''}
-                        <div class="w-full h-full flex items-center justify-center" style="${img?'display:none':'display:flex'}"><i class="fa-solid ${CAT_ICONS[cat]} text-5xl text-brand-gold/30"></i></div>
-                        <div class="view-collection-blinking">VIEW <i class="fa-solid fa-arrow-right ml-1"></i></div>
+            const cats = ['bedroom','livingroom','chairs','dining','tables','tvstands','office'];
+            const icons = { bedroom:'🛏️', livingroom:'🛋️', chairs:'🪑', dining:'🍽️', tables:'📐', tvstands:'📺', office:'💼' };
+            const labels = { bedroom:'Bedroom', livingroom:'Living Room', chairs:'Chairs', dining:'Dining', tables:'Tables', tvstands:'TV Stands', office:'Office' };
+            
+            document.getElementById('categories-container').innerHTML = cats.map(cat => {
+                const items = getByCategory(cat);
+                const img = items.length > 0 ? items[0].url : '';
+                return `
+                <div class="category-card" onclick="showCollection('${cat}')" style="background:#111;border:1px solid #1a1a1a;border-radius:12px;padding:16px;text-align:center;cursor:pointer;position:relative;">
+                    <div style="aspect-ratio:4/5;background:#0a0a0a;border-radius:8px;overflow:hidden;margin-bottom:40px;position:relative;">
+                        ${img ? `<img src="${img}" style="width:100%;height:100%;object-fit:cover;">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;">${icons[cat]}</div>`}
+                        <div class="view-collection-blinking">VIEW COLLECTION →</div>
                     </div>
-                    <div class="w-12 h-12 rounded-full bg-[#0a0a0a] border border-white/[0.06] flex items-center justify-center -mt-12 z-10 mb-4"><i class="fa-solid ${CAT_ICONS[cat]} text-brand-gold"></i></div>
-                    <h3 class="font-serif text-lg font-semibold">${CAT_LABELS[cat]}</h3>
-                    <p class="text-brand-textMuted text-xs">${CAT_EMOJI[cat]} ${imgs.length} items</p>
+                    <div style="width:45px;height:45px;background:#000;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:-50px auto 10px;position:relative;z-index:2;">${icons[cat]}</div>
+                    <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;">${labels[cat]}</h3>
+                    <p style="color:#c9a84c;font-size:0.8rem;">${items.length} items</p>
                 </div>`;
             }).join('');
-            container.innerHTML = cats;
         }
         
-        function openImageViewer(images, index) {
-            currentViewerImages = images; currentViewerIndex = index;
-            document.getElementById('viewer-image').src = images[index].url;
-            document.getElementById('image-viewer').classList.add('active');
+        function renderCollection(id, cat) {
+            const items = getByCategory(cat);
+            document.getElementById(id).innerHTML = items.length === 0 
+                ? `<p style="color:#aaa;text-align:center;grid-column:1/-1;padding:60px;">No images yet. <a href="#" onclick="openLogin()" style="color:#c9a84c;">Upload now</a></p>`
+                : items.map((item, i) => `
+                    <div class="product-card" onclick="openViewer('${cat}',${i})" style="background:#111;border:1px solid #1a1a1a;border-radius:12px;padding:12px;">
+                        <div style="aspect-ratio:4/3;background:#0a0a0a;border-radius:8px;overflow:hidden;margin-bottom:10px;">
+                            <img src="${item.url}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22150%22><rect fill=%22%23111%22 width=%22200%22 height=%22150%22/><text fill=%22%23c9a84c%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22>Image</text></svg>'">
+                        </div>
+                        <p style="font-size:0.8rem;color:#ccc;">${(item.name||'Furniture').substring(0,30)}</p>
+                    </div>
+                `).join('');
         }
-        function closeImageViewer() { document.getElementById('image-viewer').classList.remove('active'); }
-        function navigateViewer(dir) {
-            currentViewerIndex = (currentViewerIndex + dir + currentViewerImages.length) % currentViewerImages.length;
-            document.getElementById('viewer-image').src = currentViewerImages[currentViewerIndex].url;
+        
+        let viewerCat = '', viewerIdx = 0;
+        function openViewer(cat, idx) {
+            viewerCat = cat; viewerIdx = idx;
+            const items = getByCategory(cat);
+            document.getElementById('viewer-img').src = items[idx].url;
+            document.getElementById('viewer').classList.add('active');
         }
+        function closeViewer() { document.getElementById('viewer').classList.remove('active'); }
         document.addEventListener('keydown', e => {
-            if (!document.getElementById('image-viewer').classList.contains('active')) return;
-            if (e.key === 'Escape') closeImageViewer();
-            if (e.key === 'ArrowLeft') navigateViewer(-1);
-            if (e.key === 'ArrowRight') navigateViewer(1);
+            if (!document.getElementById('viewer').classList.contains('active')) return;
+            if (e.key === 'Escape') closeViewer();
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const items = getByCategory(viewerCat);
+                viewerIdx = (viewerIdx + (e.key==='ArrowRight'?1:-1) + items.length) % items.length;
+                document.getElementById('viewer-img').src = items[viewerIdx].url;
+            }
         });
         
-        async function uploadImages() {
+        function previewFiles() {
+            selectedFiles = Array.from(document.getElementById('file-input').files);
+            document.getElementById('preview-container').innerHTML = selectedFiles.map(f => 
+                `<img src="${URL.createObjectURL(f)}" style="width:80px;height:80px;object-fit:cover;border-radius:8px;">`
+            ).join('');
+        }
+        
+        async function uploadAll() {
             if (selectedFiles.length === 0) { alert('Select images!'); return; }
-            const cat = document.getElementById('upload-category').value;
-            document.getElementById('upload-progress').classList.remove('hidden');
-            const bar = document.getElementById('progress-fill');
-            const txt = document.getElementById('progress-text');
+            const cat = document.getElementById('upload-cat').value;
+            document.getElementById('progress-container').style.display = 'block';
             
             for (let i = 0; i < selectedFiles.length; i++) {
                 const fd = new FormData(); fd.append('image', selectedFiles[i]);
                 try {
-                    const r = await fetch(`https://api.imgbb.com/1/upload?key=${CONFIG.IMGBB_API_KEY}`, { method: 'POST', body: fd });
+                    const r = await fetch(`https://api.imgbb.com/1/upload?key=${CONFIG.IMGBB_API_KEY}`, { method:'POST', body:fd });
                     const d = await r.json();
                     if (d.success) {
                         await fetch(CONFIG.SHEETDB_API, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ id: String(Date.now())+String(i), category: cat, url: d.data.url, name: selectedFiles[i].name.replace(/\.[^/.]+$/, '') })
+                            method:'POST',
+                            headers: {'Content-Type':'application/json'},
+                            body: JSON.stringify({
+                                id: String(Date.now()) + String(i),
+                                category: cat,
+                                url: d.data.url,
+                                name: selectedFiles[i].name.replace(/\.[^/.]+$/, '')
+                            })
                         });
                     }
-                    bar.style.width = ((i+1)/selectedFiles.length*100) + '%';
-                    txt.textContent = `✅ ${i+1}/${selectedFiles.length}`;
-                } catch (e) { txt.textContent = '❌ Error'; }
+                    document.getElementById('progress-bar').style.width = ((i+1)/selectedFiles.length*100) + '%';
+                } catch(e) { console.error(e); }
             }
             
-            await loadProducts();
-            document.getElementById('upload-progress').classList.add('hidden');
-            bar.style.width = '0%';
+            await loadData();
+            document.getElementById('progress-container').style.display = 'none';
             selectedFiles = [];
-            document.getElementById('upload-preview').innerHTML = '';
+            document.getElementById('preview-container').innerHTML = '';
             document.getElementById('file-input').value = '';
-            alert('✅ Done! Images are now visible to everyone!');
+            alert('✅ Uploaded! Images now visible to all visitors!');
             showCollection(cat);
         }
         
-        function handleFileSelect(e) {
-            selectedFiles = Array.from(e.target.files);
-            document.getElementById('upload-preview').innerHTML = selectedFiles.map(f => `<img src="${URL.createObjectURL(f)}" class="w-full h-20 object-cover rounded-lg">`).join('');
-        }
-        
-        function showTab(t) {
-            document.getElementById('tab-upload').style.display = t==='upload'?'block':'none';
-            document.getElementById('tab-manage').style.display = t==='manage'?'block':'none';
-            document.getElementById('tab-upload-btn').className = t==='upload'?'px-5 py-2.5 bg-brand-gold text-black rounded-lg text-sm font-semibold':'px-5 py-2.5 bg-white/5 text-white rounded-lg text-sm';
-            document.getElementById('tab-manage-btn').className = t==='manage'?'px-5 py-2.5 bg-brand-gold text-black rounded-lg text-sm font-semibold':'px-5 py-2.5 bg-white/5 text-white rounded-lg text-sm';
-            if (t==='manage') {
-                document.getElementById('manage-buttons').innerHTML = CATEGORIES.map(c => `<button onclick="showManage('${c}')" class="text-xs bg-white/5 px-3 py-2 rounded-lg">${CAT_EMOJI[c]} ${CAT_LABELS[c]}</button>`).join('');
+        async function clearAll() {
+            if (!confirm('DELETE ALL IMAGES? This cannot be undone!')) return;
+            for (const item of allData) {
+                try { await fetch(`${CONFIG.SHEETDB_API}/id/${item.id}`, { method:'DELETE' }); } catch(e) {}
             }
-        }
-        
-        function showManage(cat) {
-            const imgs = getImages(cat);
-            document.getElementById('manage-images').innerHTML = imgs.length===0 ? '<p class="text-brand-textMuted text-sm text-center py-6">No images</p>' : imgs.map(i => `<div class="relative"><img src="${i.url}" class="w-full h-20 object-cover rounded-lg"><button class="absolute top-1 right-1 bg-red-500 text-white w-5 h-5 rounded-full text-xs" onclick="delImg('${i.id}')">×</button></div>`).join('');
-        }
-        
-        async function delImg(id) {
-            if (!confirm('Delete?')) return;
-            await fetch(`${CONFIG.SHEETDB_API}/id/${id}`, { method: 'DELETE' });
-            await loadProducts();
+            await loadData();
             showHome();
+            alert('All images deleted.');
         }
         
         function adminLogin() {
-            if (document.getElementById('admin-password').value === CONFIG.ADMIN_PASSWORD) {
-                isAdmin = true;
+            if (document.getElementById('admin-pass').value === CONFIG.ADMIN_PASSWORD) {
                 document.getElementById('login-modal').classList.remove('active');
                 document.getElementById('admin-panel').classList.add('active');
-                document.getElementById('login-error').classList.add('hidden');
-                showTab('upload');
-            } else { document.getElementById('login-error').classList.remove('hidden'); }
+                document.getElementById('login-error').style.display = 'none';
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
         }
-        function closeAdminPanel() { document.getElementById('admin-panel').classList.remove('active'); }
-        function openLoginModal() {
-            if (isAdmin) { document.getElementById('admin-panel').classList.add('active'); showTab('upload'); }
-            else { document.getElementById('login-modal').classList.add('active'); document.getElementById('login-error').classList.add('hidden'); }
-        }
-        
-        function renderCollection(cid, cat) {
-            const c = document.getElementById(cid);
-            if (!c) return;
-            const imgs = getImages(cat);
-            c.innerHTML = imgs.length===0 ? `<div class="col-span-full text-center py-20"><i class="fa-solid fa-image text-5xl text-brand-gold/20 mb-5 block"></i><p class="text-brand-textMuted text-lg">No images yet</p></div>` : imgs.map((img,i) => `<div class="product-card group bg-brand-cardBg border border-white/[0.04] p-3 rounded-xl" onclick="openImageViewer(getImages('${cat}'),${i})"><div class="w-full aspect-[4/3] overflow-hidden bg-[#0d0d0d] mb-4 rounded-lg"><img src="${img.url}" class="w-full h-full object-cover opacity-90" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300/1a1a1a/c9a84c?text=Image'"></div><h3 class="text-xs text-white/85 px-1">${(img.name||'Furniture').replace(/[-_]/g,' ')}</h3></div>`).join('');
+        function openLogin() {
+            document.getElementById('login-modal').classList.add('active');
+            document.getElementById('login-error').style.display = 'none';
         }
         
         function showCollection(cat) {
             document.querySelectorAll('.collection-section').forEach(el => el.classList.remove('active'));
-            ['home-section','home-section2','home-section3','ceo-contact'].forEach(id => { const el = document.getElementById(id); if(el) el.style.display='none'; });
+            ['home-section','home-section3'].forEach(id => { const el = document.getElementById(id); if(el) el.style.display='none'; });
             const sec = document.getElementById(cat+'-collection');
             if (sec) { sec.classList.add('active'); renderCollection(cat+'-products', cat); }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo(0,0);
         }
         
         async function showHome() {
             document.querySelectorAll('.collection-section').forEach(el => el.classList.remove('active'));
             document.getElementById('home-section').style.display='flex';
-            document.getElementById('home-section2').style.display='block';
             document.getElementById('home-section3').style.display='block';
-            document.getElementById('ceo-contact').style.display='block';
-            await loadProducts();
+            await loadData();
             renderCategories();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo(0,0);
         }
         
-        document.addEventListener('click', e => { if(e.target.classList.contains('modal')) e.target.classList.remove('active'); });
-        document.addEventListener('DOMContentLoaded', () => showHome());
-        
-        window.showCollection=showCollection;window.showHome=showHome;window.adminLogin=adminLogin;
-        window.openLoginModal=openLoginModal;window.closeAdminPanel=closeAdminPanel;
-        window.uploadImages=uploadImages;window.handleFileSelect=handleFileSelect;
-        window.delImg=delImg;window.showManage=showManage;window.showTab=showTab;
-        window.openImageViewer=openImageViewer;window.closeImageViewer=closeImageViewer;
-        window.navigateViewer=navigateViewer;window.getImages=getImages;
+        document.addEventListener('DOMContentLoaded', showHome);
+        window.showHome=showHome;window.showCollection=showCollection;
+        window.adminLogin=adminLogin;window.openLogin=openLogin;
+        window.uploadAll=uploadAll;window.previewFiles=previewFiles;
+        window.openViewer=openViewer;window.closeViewer=closeViewer;
+        window.clearAll=clearAll;
     </script>
 </body>
 </html>
